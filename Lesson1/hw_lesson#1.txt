@@ -1,0 +1,2 @@
+Дата создания таблицы AdventureWorks2017.Person.Person – 27.10.2017 14:33
+Таблица AdventureWorksDW2017.dbo.DimPromotion в байтах занимает 0,008 * 2^20 байт (или 8 389 байт)
