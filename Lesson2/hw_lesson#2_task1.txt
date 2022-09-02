@@ -1,0 +1,22 @@
+-- hw2
+
+--task1 a)
+SELECT *
+FROM Sales.SalesTerritory
+
+
+--task1 b)
+SELECT TerritoryID, Name
+FROM Sales.SalesTerritory
+
+
+--task1 c)
+SELECT *
+FROM Person.Person
+WHERE LastName = 'Norman'
+
+
+--task1 d)
+SELECT *
+FROM Person.Person
+WHERE EmailPromotion != 2
