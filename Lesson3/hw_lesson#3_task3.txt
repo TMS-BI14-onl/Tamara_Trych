@@ -1,0 +1,29 @@
+-- hw3
+
+--task3 a)
+SELECT p.Name, p.ListPrice
+FROM Production.Product p JOIN Production.ProductModel m
+ON p.ProductModelID = m.ProductModelID
+WHERE m.Name LIKE 'LL%'
+
+
+--task3 b)
+SELECT Name
+FROM Purchasing.Vendor
+UNION
+SELECT Name
+FROM Sales.Store
+ORDER BY Name
+
+
+--task3 c)
+ SELECT Name
+ FROM Production.Product
+ WHERE ProductID IN (
+	SELECT ProductID
+	FROM Sales.SpecialOfferProduct s JOIN Sales.SpecialOffer o
+	ON s.SpecialOfferID = o.SpecialOfferID
+	WHERE o.DiscountPct > 0
+	GROUP BY ProductID
+	HAVING Count(1) > 1
+	)

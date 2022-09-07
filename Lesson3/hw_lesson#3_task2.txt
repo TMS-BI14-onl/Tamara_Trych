@@ -1,0 +1,36 @@
+-- hw3
+
+--task2 a)
+SELECT Name,
+CASE
+	WHEN StandardCost = 0 OR StandardCost IS NULL THEN 'Not for sale'
+	WHEN StandardCost > 0 AND StandardCost < 100 THEN '<$100'
+	WHEN StandardCost >= 100 AND StandardCost < 500 THEN '<$500'
+	ELSE '>=$500'
+END AS PriceRange
+FROM Production.Product
+
+
+--task2 b)
+SELECT p.ProductID, p.BusinessEntityID, v.Name
+FROM Purchasing.ProductVendor p JOIN Purchasing.Vendor v
+ON p.BusinessEntityID = v.BusinessEntityID
+WHERE p.StandardPrice > $10 AND (v.Name LIKE '%x%' OR v.Name LIKE 'N%')
+
+
+--task2 c)
+SELECT Name
+FROM Purchasing.Vendor
+EXCEPT 
+SELECT v.Name
+FROM
+Purchasing.ProductVendor p JOIN Purchasing.Vendor v
+ON p.BusinessEntityID = v.BusinessEntityID
+///////////////
+SELECT Name
+FROM Purchasing.Vendor v LEFT JOIN Purchasing.ProductVendor p
+ON p.BusinessEntityID = v.BusinessEntityID
+WHERE p.BusinessEntityID IS NULL
+
+
+--task1 d)
