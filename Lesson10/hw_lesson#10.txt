@@ -1,0 +1,13 @@
+--hw10
+
+--task3
+
+ELECT YearOrder, [1] AS January, [2] AS February, [3] AS March
+FROM
+(SELECT	OrderQty, YEAR(DueDate) AS YearOrder, MONTH(DueDate) AS MonthOrder
+FROM Production.WorkOrder) t
+PIVOT
+(SUM(OrderQty)
+FOR MonthOrder
+IN ([1], [2], [3])) AS PivotTable
+ORDER BY YearOrder
