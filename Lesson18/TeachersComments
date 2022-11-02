@@ -1,0 +1,17 @@
+Well done!
+
+1
+-0.5
+All can be done in one query. For example:
+SELECT man.first_name, man.cast_name, COUNT(emp.employee_id) as cnt_of_emp
+FROM employees man, employees emp ON man.employee_id=emp.manager_id
+GROUP BY man.first_name, man.cast_name
+HAVING COUNT(emp.employee_id)>6
+
+3
+-0.25
+No need in the subquery. You can order by something without having it in the SELECT.
+
+
+
+Mark: 9
